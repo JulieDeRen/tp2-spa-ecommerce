@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <script src="https://eko.com/s/sonorous/Sonorous.min.gz.js"></script>
+    <script src="https://eko.com/s/sonorous/demos/knob.js"></script>
+    <!-- Ref : https://codepen.io/OpherV/pen/xxwRMBw
+      CodePen Home
+    Sonorous Boombox
+    Opher Vishnia-->
+    <title>React App</title>
+  </head>
+  <body>
+
+    <!-------------- Header ------------->
+    <div class="header">
+      <div class="relative">
+      <div class="header-flexbox">
+        <div>
+          <h2>
+            Réserve tes billets
+            <div class="mask">
+              <span data-show>de danse.</span>
+              <span>de concerts.</span>
+              <span>de spectacles.</span>
+              <span>de théâtre.</span>
+            </div>
+          </h2>
+        </div>
+  
+  
+        <div class="boombox active">
+          <div class="head">
+            <div class="guitarInput"></div>
+            <div class="volumeContainer">
+              <input type="range" min="0" max="1" step="0.01" value="1" id="volume" />
+              <div class="dial"></div>
+              <div class="title">Volume</div>
+            </div>
+            <div class="controls">
+              <button class="play"/>
+              <button class="pause" />
+              <button class="stop" /> 
+            </div>
+            <button class="power" />
+          </div>
+          <a class="logo" href="">Sonorous</a>
+          <div class="driver leftDriver"></div>
+          <div class="driver rightDriver"></div>
+        </div>
+      </div>
+      <div class="buffer"></div>
+      </div>
+      
+    </div>
+
+  
+    <script>
+      setInterval(function () {
+    const show = document.querySelector('span[data-show]')
+    const next = show.nextElementSibling || document.querySelector('span:first-child')
+    const up = document.querySelector('span[data-up]')
+    
+    if (up) {
+      up.removeAttribute('data-up')
+    }
+    
+    show.removeAttribute('data-show')
+    show.setAttribute('data-up', '')
+    
+    next.setAttribute('data-show', '')
+    }, 2000)
+    </script>
+    
+    <script type="module">
+    if (Sonorous && Sonorous.isSupported()) {
+      /*https://video.eko.com/s/sonorous/demos/boombox/Tillian_Frozen_Sun.mp3 */
+      const sonor = window.Sonorous.addSonor('everybody-dance.mp3');
+    
+      const boombox = document.querySelector('.boombox');
+      const playButton = document.querySelector('.play');
+      const pauseButton = document.querySelector('button.pause');
+      const stopButton = document.querySelector('.stop');
+      const volumeinput = document.querySelector('.volumeContainer input');
+      const volumeDial = document.querySelector('.dial');
+      const powerControl = document.querySelector('.power');
+    
+      playButton.addEventListener('click', () => {
+        if (boombox.classList.contains('active')) {
+          if (sonor.isPlaying) {
+            sonor.pause();
+            boombox.classList.remove("playing");
+            pauseButton.classList.add("btn-pause-actif");
+          } else {
+            sonor.play();
+            boombox.classList.add("playing");
+            pauseButton.classList.remove("btn-pause-actif");
+          }
+        }
+      });
+      // bouton pause ajouté
+      pauseButton.addEventListener('click', () => {
+        if (boombox.classList.contains('active')) {
+          if (sonor.isPlaying) {
+            sonor.pause();
+            boombox.classList.remove("playing");
+            pauseButton.classList.add("btn-pause-actif");
+          }
+          else {
+            sonor.play();
+            boombox.classList.add("playing");
+            pauseButton.classList.remove("btn-pause-actif");
+          }
+          
+        }
+      });
+      // bouton stop ajouté
+      stopButton.addEventListener('click', () => {
+          if(sonor.isPlaying || pauseButton.classList.contains("btn-pause-actif")) {
+            sonor.stop();
+            boombox.classList.remove("playing");
+
+            if(pauseButton.classList.contains("btn-pause-actif")){
+              pauseButton.classList.remove("btn-pause-actif");
+            }
+
+          }
+      });
+    
+      sonor.on('ended', () => {
+        boombox.classList.remove("playing");
+      });
+    
+    
+      knob(volumeinput, volumeDial, {
+        rangeInDegrees: 270,
+        rangeStartDegree: 220,
+        onUpdate: value => {
+          sonor.volume = value;
+          let degrees = value * 270 + 40;
+          volumeDial.style.transform = `rotate(${degrees}deg)`;
+        }
+      });
+    
+      powerControl.addEventListener('click', () => {
+        if (boombox.classList.contains('active')) {
+          if (sonor.isPlaying) {
+            sonor.stop();
+            boombox.classList.remove('playing')
+          }
+    
+          boombox.classList.remove('active')
+        } else {
+          boombox.classList.add('active')
+        }
+      });
+    
+    }
+    let pub = document.querySelector(".logo");
+    pub.addEventListener("click", function redirection(e){
+      console.log("test logo")
+      e.preventDefault();
+      const playButton = document.querySelector('.play');
+      playButton.click();
+    })
+    </script>
+    <!-------- fin header --------->
+
+
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
