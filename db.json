@@ -2,51 +2,105 @@
   "tasks": [
     {
       "id": 1,
-      "text": "Doctors appointment",
+      "text": "Yemen Blues",
+      "title": "It doesn't matter",
+      "category": "Musique",
+      "img": "./upload/1.jpeg",
+      "venue": "Mtelus",
       "day": "Feb 5th at 2:30pm",
-      "reminder": false
+      "price": 60,
+      "promotion": false
     },
     {
       "id": 2,
-      "text": "Meeting at school",
+      "text": "Blue man group",
+      "title": "PVC tour",
+      "img": "./upload/2.jpg",
+      "category": "Musique",
+      "venue": "Théâtre Rialto",
       "day": "Feb 6th at 1:30pm",
-      "reminder": false
+      "price": 33,
+      "promotion": false
     },
     {
-      "text": "t3",
-      "day": "383940",
-      "reminder": false,
+      "text": "Estas Tonne",
+      "title": "Internal flight",
+      "category": "Musique",
+      "img": "./upload/3.jpeg",
+      "venue": "Lion d'or",
+      "day": "Jully 9th",
+      "price": 45,
+      "promotion": false,
       "id": 3
     },
     {
-      "text": "Un autre spectacle",
+      "text": "Faran Ensemble",
+      "title": "Dunes",
+      "img": "./upload/4.jpeg",
+      "category": "Musique",
+      "venue": "Lion d'or",
       "day": "29 mai 2023",
-      "reminder": false,
+      "price": 35,
+      "promotion": false,
       "id": 4
     },
     {
-      "text": "specatbl",
-      "day": "afda",
-      "reminder": false,
+      "text": "Grands Ballets Canadiens",
+      "title": "Casse-Noisette",
+      "img": "./upload/5.jpg",
+      "category": "Danse",
+      "venue": "Place-des-arts",
+      "day": "10 sept 2023",
+      "price": 95,
+      "promotion": false,
       "id": 5
     },
     {
-      "text": "fdafa",
-      "day": "afada",
-      "reminder": false,
+      "text": "Fred Pellerin",
+      "title": "Belle Lurette",
+      "img": "./upload/6.jpeg",
+      "category": "Conte & Légende",
+      "venue": "Place-des-arts",
+      "day": "15 sept 2023",
+      "price": 70,
+      "promotion": false,
       "id": 6
     },
     {
-      "text": "fdafda",
-      "day": "fdafa",
-      "reminder": false,
+      "text": "klm;k",
+      "day": "2023-03-18",
+      "title": "fkdl;ksa;l",
+      "price": "10",
+      "promotion": false,
+      "venue": "ckjklj",
+      "img": "C:\\fakepath\\email.png",
+      "category": "",
+      "minDate": "",
       "id": 7
     },
     {
-      "text": "dafaa",
-      "day": "afdafa",
-      "reminder": false,
+      "text": "fl;kja;fkda",
+      "day": "2023-03-26",
+      "title": "dkafl;lfda",
+      "price": "10",
+      "promotion": false,
+      "venue": "fdalf;kda",
+      "img": "C:\\fakepath\\email.png",
+      "category": "",
+      "minDate": "",
       "id": 8
+    },
+    {
+      "text": "fjakl;fa",
+      "day": "2023-04-08",
+      "title": "kaf;lkda",
+      "price": "2",
+      "promotion": false,
+      "venue": "fjl;fjad",
+      "img": "C:\\fakepath\\github.png",
+      "category": "",
+      "minDate": "",
+      "id": 9
     }
   ]
 }

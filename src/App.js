@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
 import Catalog from './components/Catalog'
-import AddTask from './components/AddTask'
+import AddEvent from './components/AddEvent'
 import Footer from './components/Footer'
 import About from './components/About'
 
@@ -60,6 +60,7 @@ const toggleReminder = async (id) => {
   const data = await res.json()
  // console.log(id)
   setTasks(tasks.map((task) => task.id === id ? { ...task, reminder:data.reminder} : task))
+
 }
 
 //Add
@@ -88,7 +89,7 @@ const [showAddTask, setShowAddTask] = useState(false)
       <>
         <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
         
-        { showAddTask && <AddTask onAdd={addTask}/> }
+        { showAddTask && <AddEvent onAdd={addTask}/> }
           <Routes>
             <Route path="/" element={<Catalog tasks={tasks} onDeleteMany={deleteTask} onToggleMany={toggleReminder}/>}/>
           </Routes>

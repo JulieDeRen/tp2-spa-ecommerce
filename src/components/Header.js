@@ -7,16 +7,22 @@ const Header = (props) => {
     }*/
     const location = useLocation()
     return (
-        <header className="header">
+        <header className="header nav">
         {/*<h1 style={{color: 'red', backgroundColor:'black'  }}>{props.title}</h1>
         <h1 style={headingStyle}>{props.title}</h1>*/}
-            <h1>{props.title}</h1>
-            { location.pathname === '/' &&(
+
+            <nav className="navigation">
+                <a href="/" className="nav">{props.title}</a>
+                <a href="/about" className="nav">À propos</a>
+                { location.pathname === '/' &&(
             <Button 
-            text={props.showAdd ? 'Close' : 'Add'} 
-            color={props.showAdd ? 'red' : 'green'}
+            text={props.showAdd ? 'Fermer' : 'Ajouter'} 
+            color={props.showAdd ? 'red' : '#18e198'}
             onClick={props.onAdd}/>
             )}
+            </nav>
+            
+
 
 
         </header>
@@ -24,7 +30,7 @@ const Header = (props) => {
 }
 
 Header.defaultProps = {
-    title: "Task Tracker"
+    title: "Billets"
 }
 
 Header.propTypes = {
