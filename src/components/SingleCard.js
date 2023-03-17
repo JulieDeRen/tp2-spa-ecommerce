@@ -1,5 +1,4 @@
 import { FaTimes } from 'react-icons/fa';
-import Button from './Button';
 
 const SingleCard = ({event, onDelete, onToggle}) => {
     return(
@@ -13,7 +12,7 @@ const SingleCard = ({event, onDelete, onToggle}) => {
                     /></div>
 
                 <div className="tourname">{event.title}</div>
-                <img src={event.img} alt="image de spectacle" className="imgCard"/>
+                <img src={event.img} alt="spectacle" className="imgCard"/>
                 <div className="deetz --flex-row-j">
                     <div className="event --flex-column">
                         <div className="date">{event.day}</div>

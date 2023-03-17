@@ -67,40 +67,48 @@
       "id": 6
     },
     {
-      "text": "klm;k",
-      "day": "2023-03-18",
-      "title": "fkdl;ksa;l",
-      "price": "10",
+      "text": "jflk;a",
+      "day": "2023-03-31",
+      "title": "mdlamf",
+      "price": "5",
       "promotion": false,
-      "venue": "ckjklj",
-      "img": "C:\\fakepath\\email.png",
+      "venue": "dsafa",
+      "img": "./upload/maps-and-flags.png",
       "category": "",
-      "minDate": "",
       "id": 7
     },
     {
-      "text": "fl;kja;fkda",
-      "day": "2023-03-26",
-      "title": "dkafl;lfda",
-      "price": "10",
+      "text": "cdjklsja;",
+      "day": "2023-03-25",
+      "title": "okllkn",
+      "price": "6",
       "promotion": false,
-      "venue": "fdalf;kda",
-      "img": "C:\\fakepath\\email.png",
+      "venue": "ewwrew",
+      "img": "./upload/email.png",
       "category": "",
-      "minDate": "",
       "id": 8
     },
     {
-      "text": "fjakl;fa",
+      "text": "fejjf",
       "day": "2023-04-08",
-      "title": "kaf;lkda",
-      "price": "2",
+      "title": "jfedkla",
+      "price": "0",
       "promotion": false,
-      "venue": "fjl;fjad",
-      "img": "C:\\fakepath\\github.png",
+      "venue": "afafda",
+      "img": "./upload/maps-and-flags.png",
       "category": "",
-      "minDate": "",
       "id": 9
+    },
+    {
+      "text": "djklj;fkla",
+      "day": "2023-03-26",
+      "title": "fdaoijfdka",
+      "price": "4",
+      "promotion": false,
+      "venue": "afafd",
+      "img": "./upload/linkedin.png",
+      "category": "",
+      "id": 10
     }
   ]
 }

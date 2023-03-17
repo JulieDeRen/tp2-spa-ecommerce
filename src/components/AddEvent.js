@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
-import React from "react";
 
 const AddEvent = ({onAdd, setTasks}) => {
     const [text, setText] = useState('')
@@ -10,8 +9,8 @@ const AddEvent = ({onAdd, setTasks}) => {
     const [venue, setVenue] = useState('')
     const [category, setCategory] = useState('')
     const [img, setImg] = useState('')
-    const [minDate, setMinDate]=useState('')
     const [promotion, setPromotion] = useState(false)
+
 
     const onSubmit = (e) => {
         e.preventDefault()
@@ -20,15 +19,33 @@ const AddEvent = ({onAdd, setTasks}) => {
             return
         }
         if(img){
+            console.log('je suis dedans');
             console.log(img)
-            let formData = new FormData();
-            formData.set('img', img);
-            axios.post("http://localhost:3000/upload/", formData)
+            /*let formData = new FormData();
+                
+            formData.append("img", img);
+            fetch(`${img}`, {method: "POST", body: formData});*/
+            let image = document.querySelector('#fileImg').file;
+            axios.post('http://localhost:5000', {
+                                                    image
+                                                    }, {
+                                                        headers: {
+                                                        'Content-Type': 'multipart/form-data'
+                                                        }
+                                                    }
+            ).then(res => {
+                console.log(res)
+              }).catch(err=>{
+                console.log(err)
+              })
+
+        
+           /* axios.post(`${img}`, formData)
               .then(res => {
               console.log(res)
-            })
+            })*/
         }
-        onAdd({text, day, title, price, promotion, venue, img, category, minDate})
+        onAdd({text, day, title, price, promotion, venue, img, category})
         setText('')
         setDay('')
         setTitle('')
@@ -37,22 +54,6 @@ const AddEvent = ({onAdd, setTasks}) => {
         setVenue('')
         setCategory('')
         setPromotion(false)
-
-        var today = new Date();
-        var dd = today.getDate();
-        var mm = today.getMonth() + 1; //Sinon janvier est 0!
-        var yyyy = today.getFullYear();
-    
-        if (dd < 10) {
-        dd = '0' + dd;
-        }
-    
-        if (mm < 10) {
-        mm = '0' + mm;
-        } 
-            
-        today = dd + '-' + mm + '-' + yyyy;
-        minDate=today;
 
     }
 
@@ -94,7 +95,6 @@ const AddEvent = ({onAdd, setTasks}) => {
                 <label>Date de l'événement</label>
                 <input
                 type='date'
-                min={minDate}
                 placeholder="Date de l'événement"
                 value={day}
                 onChange = {(e) => setDay(e.target.value)}
@@ -113,7 +113,7 @@ const AddEvent = ({onAdd, setTasks}) => {
             </div>
             <div className="form-control">
                 <label>Catégorie</label>
-                <select class="form-control" onChange = {(e) => setCategory(e.target.value)} >
+                <select className="form-control" onChange = {(e) => setCategory(e.target.value)} >
                     <option value="" disabled>Choisissez une catégorie</option>
                     <option value={category}>Musique</option>
                     <option value={category}>Danse</option>
@@ -125,12 +125,13 @@ const AddEvent = ({onAdd, setTasks}) => {
             </div>
             <div className="form-control">
                 <label>Choisissez une image</label>
+                
                 <input
                 type='file'
+                name='img'
                 id='fileImg'
                 accept='image/*'
-                value={img}
-                onChange = {(e) => setImg(e.target.files[0])}
+                onChange = {(e) => setImg('./upload/' + e.target.files[0].name)}
                 required
                 />
             </div>
