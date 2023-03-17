@@ -754,7 +754,7 @@ nav.navigation{
   color: #1d1d1f;
   cursor: pointer;
 }
-a{
+a:not(a.logo){
   text-decoration: none;
   padding: 30px;
   color: #1d1d1f;

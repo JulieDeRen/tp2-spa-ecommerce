@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const AddEvent = ({onAdd, setTasks}) => {
+
+
+const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [price, setPrice] = useState('')
@@ -26,7 +28,7 @@ const AddEvent = ({onAdd, setTasks}) => {
                 
             formData.append("img", img);
             fetch(`${img}`, {method: "POST", body: formData});*/
-            let image = document.querySelector('#fileImg').file;
+            /*let image = document.querySelector('#fileImg').file;
             axios.post('http://localhost:5000', {
                                                     image
                                                     }, {
@@ -38,13 +40,14 @@ const AddEvent = ({onAdd, setTasks}) => {
                 console.log(res)
               }).catch(err=>{
                 console.log(err)
-              })
+              })*/
 
         
            /* axios.post(`${img}`, formData)
               .then(res => {
               console.log(res)
             })*/
+
         }
         onAdd({text, day, title, price, promotion, venue, img, category})
         setText('')
@@ -55,6 +58,43 @@ const AddEvent = ({onAdd, setTasks}) => {
         setVenue('')
         setCategory('')
         setPromotion(false)
+
+    }
+
+    function onClickHandler(){
+        console.log("bouton upload")
+
+        var formData = new FormData();
+        var imagefile = document.querySelector('#fileImg');
+        console.log(imagefile.files[0]);
+
+        formData.append("img", imagefile.files[0]);
+        console.log('>> formData >> ', formData);
+        const res = axios.post(`http://localhost:5000/upload`, imagefile.files[0], {
+            headers: {
+            'Content-Type': 'multipart/form-data'
+            }
+        }).then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err.response)
+        })
+
+
+/*
+
+        const data = new FormData() 
+        data.append('file', setImg)
+        console.log(img);
+
+        axios.post(img, data, { 
+           // receive two    parameter endpoint url ,form data
+       }).then(res => { // then print response status
+        console.log(res.statusText)
+        console.log(res)
+     }).catch(err=>{
+        console.log(err.responseJSON);
+     })*/
 
     }
 
@@ -133,9 +173,10 @@ const AddEvent = ({onAdd, setTasks}) => {
                 name='img'
                 id='fileImg'
                 accept='image/*'
-                onChange = {(e) => setImg('./upload/' + e.target.files[0].name)}
+                onChange = {(e) => setImg(e.target.files[0].name)}
                 required
                 />
+                <button type="button" className="btn btn-success btn-block" onClick={onClickHandler}>Upload</button> 
             </div>
             <div className="form-control form-control-check">
                 <label>Promotion</label>

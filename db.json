@@ -101,27 +101,15 @@
       "reminder": true
     },
     {
-      "text": "djklj;fkla",
+      "text": "Ceci est test30000",
       "day": "2023-03-26",
-      "title": "fdaoijfdka",
-      "price": "4",
+      "title": "jk;jfsda",
+      "price": "6",
       "promotion": false,
-      "venue": "afafd",
-      "img": "./upload/linkedin.png",
-      "category": "",
-      "id": 10,
-      "reminder": true
-    },
-    {
-      "text": "Ceci est un test",
-      "day": "2023-03-18",
-      "title": "Le test",
-      "price": "1",
-      "promotion": false,
-      "venue": "test",
+      "venue": "jdlkaf",
       "img": "./upload/email.png",
       "category": "",
-      "id": 11
+      "id": 10
     }
   ]
 }
