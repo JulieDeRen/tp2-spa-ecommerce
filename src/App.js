@@ -11,14 +11,14 @@ import About from './components/About'
 function App() {
 //1 - Global
 
-const [tasks, setTasks] = useState ([])
+const [tasks, setCards] = useState ([])
 
 useEffect(()=>  {
-    const getTasks = async () => {
-      const tasksFromServer = await fetchTasks()
-      setTasks(tasksFromServer)
+    const getCards = async () => {
+      const eventsFromServer = await fetchTasks()
+      setCards(eventsFromServer)
     }
-    getTasks()
+    getCards()
     //fetchTasks()
 },[])
 
@@ -29,7 +29,7 @@ const fetchTasks = async () => {
   return data
 }
 
-const fetchTask = async (id) => {
+const fetchCard = async (id) => {
   const res = await fetch(`http://localhost:5000/tasks/${id}`)
   const data = await res.json()
   //console.log(data)
@@ -37,17 +37,38 @@ const fetchTask = async (id) => {
 }
 
 //Delete
-const deleteTask = async (id) => {
+const deleteCard = async (id) => {
   await fetch(`http://localhost:5000/tasks/${id}`, {
     method: 'DELETE',
   })
   //console.log(id)
-  setTasks(tasks.filter((task) => task.id !== id))
+  setCards(tasks.filter((task) => task.id !== id))
 }
 
-//ToggleReminder
+// Update
+const editCard = async (task, id) => {
+  const buttonAdd = document.querySelector(".button-add");
+  console.log(buttonAdd);
+  buttonAdd.click();
+
+  if(buttonAdd.click()){
+    const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+      method: 'PUT',
+      headers:{
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task)
+  })
+  const newTask = await res.json()
+  setCards([...tasks, newTask])
+  }
+ 
+}
+
+
+//TogglePromotion
 const toggleReminder = async (id) => {
-  const taskToToggle = await fetchTask(id)
+  const taskToToggle = await fetchCard(id)
   const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
   //console.log(updTask)
   const res = await fetch(`http://localhost:5000/tasks/${id}`,{
@@ -59,7 +80,7 @@ const toggleReminder = async (id) => {
   })
   const data = await res.json()
  // console.log(id)
-  setTasks(tasks.map((task) => task.id === id ? { ...task, reminder:data.reminder} : task))
+  setCards(tasks.map((task) => task.id === id ? { ...task, reminder:data.reminder} : task))
 
 }
 
@@ -78,7 +99,7 @@ const addTask =  async (task) => {
   //const newTask = {id, ...task}
   //console.log(newTask)
   const newTask = await res.json()
-  setTasks([...tasks, newTask])
+  setCards([...tasks, newTask])
 }
 
 //toggle Form
@@ -91,8 +112,8 @@ const [showAddTask, setShowAddTask] = useState(false)
         <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
         
         { showAddTask && <AddEvent onAdd={addTask}/> }
-          <Routes>
-            <Route path="/" element={<Catalog tasks={tasks} onDeleteMany={deleteTask} onToggleMany={toggleReminder}/>}/>
+        <Routes>
+            <Route path="/" element={<Catalog tasks={tasks} onDeleteMany={deleteCard} onEditMany={editCard} onToggleMany={toggleReminder}/>}/>
           </Routes>
         <Routes>
           <Route path='/about' element={<About/>}/>

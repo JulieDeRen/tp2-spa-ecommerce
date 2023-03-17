@@ -4,7 +4,7 @@ const Button =({text, color, onClick})=>{
         console.log(e.target)
     }*/
     return (
-        <a className="button-add" onClick={onClick} style ={{color: color}}>{text}</a>
+        <a className="button-add nav" onClick={onClick} style ={{color: color}}>{text}</a>
     )
 }
 

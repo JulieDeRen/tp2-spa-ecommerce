@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useLocation } from 'react-router-dom'
 import Button from './Button'
+import { Link } from 'react-router-dom'
 const Header = (props) => {
   /*  const onClick = () => {
         console.log('Component')
@@ -12,8 +13,8 @@ const Header = (props) => {
         <h1 style={headingStyle}>{props.title}</h1>*/}
 
             <nav className="navigation">
-                <a href="/" className="nav">{props.title}</a>
-                <a href="/about" className="nav">À propos</a>
+                <Link to="/" className="nav">{props.title}</Link>
+                <Link to="/about" className="nav">À propos</Link>
                 { location.pathname === '/' &&(
             <Button 
             text={props.showAdd ? 'Fermer' : 'Ajouter'} 

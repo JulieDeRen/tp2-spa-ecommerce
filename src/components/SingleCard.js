@@ -1,15 +1,28 @@
-import { FaTimes } from 'react-icons/fa';
+import { FaTimes, FaEdit } from 'react-icons/fa';
 
-const SingleCard = ({event, onDelete, onToggle}) => {
+const SingleCard = ({event, onDelete, onEdit, onToggle}) => {
     return(
         <div className={`ticket ${event.promotion ? 'promotion' : ''}`} onDoubleClick={() => onToggle(event.id)}>
-            <widget type="ticket" className="--flex-column"> 
+            <span type="ticket" className="--flex-column"> 
                 <div className="top --flex-column">
-                <div className="bandname -bold">{event.text}
-                    <FaTimes 
-                    style={{ color: 'red', cursor: 'pointer'}}
-                    onClick = {() => onDelete(event.id)} 
-                    /></div>
+                <div className="bandname -bold --flex-row-j">
+                    <div>
+                        {event.text}
+                    </div>
+                    <div>
+                        <FaEdit
+                        style={{ color: 'black', cursor: 'pointer'}}
+                        onClick = {() => onEdit(event.id)} />
+                    </div>
+                    <div>
+                        <FaTimes 
+                        style={{ color: 'red', cursor: 'pointer'}}
+                        onClick = {() => onDelete(event.id)} 
+                        />
+                    </div>
+                </div>
+                    
+                
 
                 <div className="tourname">{event.title}</div>
                 <img src={event.img} alt="spectacle" className="imgCard"/>
@@ -29,7 +42,7 @@ const SingleCard = ({event, onDelete, onToggle}) => {
                 <div className="barcode"></div>
                 <a className="buy" href="#">ACHETER</a>
                 </div>
-            </widget>
+            </span>
         </div>
         
     )

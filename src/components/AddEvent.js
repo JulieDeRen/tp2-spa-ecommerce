@@ -13,6 +13,7 @@ const AddEvent = ({onAdd, setTasks}) => {
 
 
     const onSubmit = (e) => {
+        console.log(setTasks);
         e.preventDefault()
         if(!text){
             alert('Informations manquantes')
@@ -65,6 +66,7 @@ const AddEvent = ({onAdd, setTasks}) => {
                 <input
                 type='text'
                 placeholder="Nom de l'artiste ou du groupe"
+                name='text'
                 value={text}
                 onChange = {(e) => setText(e.target.value)}
                 required

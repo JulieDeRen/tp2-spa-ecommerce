@@ -97,7 +97,8 @@
       "venue": "afafda",
       "img": "./upload/maps-and-flags.png",
       "category": "",
-      "id": 9
+      "id": 9,
+      "reminder": true
     },
     {
       "text": "djklj;fkla",
@@ -108,7 +109,19 @@
       "venue": "afafd",
       "img": "./upload/linkedin.png",
       "category": "",
-      "id": 10
+      "id": 10,
+      "reminder": true
+    },
+    {
+      "text": "Ceci est un test",
+      "day": "2023-03-18",
+      "title": "Le test",
+      "price": "1",
+      "promotion": false,
+      "venue": "test",
+      "img": "./upload/email.png",
+      "category": "",
+      "id": 11
     }
   ]
 }
