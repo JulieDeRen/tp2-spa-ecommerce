@@ -47,13 +47,14 @@ const deleteCard = async (id) => {
 
 // Update
 const editCard = async (id) => {
+  console.log(id)
   const buttonAdd = document.querySelector(".button-add");
   buttonAdd.click();
 
 
   if(buttonAdd.click(id)){
     const cardToUpdate = await fetchCard(id)
-    const res = await fetch(`http://localhost:5000/events/${id}`,{
+    const res = await fetch(`http://localhost:5000/events/`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
@@ -77,7 +78,7 @@ const toggleReminder = async (id) => {
   const cardToToggle = await fetchCard(id)
   const editPromotion= {...cardToToggle, promotion: !cardToToggle.promotion}
   //console.log(updTask)
-  const res = await fetch(`http://localhost:5000/events/${id}`,{
+  const res = await fetch(`http://localhost:5000/events/`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
