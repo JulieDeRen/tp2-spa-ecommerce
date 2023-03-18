@@ -47,27 +47,25 @@ const deleteCard = async (id) => {
 
 // Update
 const editCard = async (id) => {
-  const getCard = await fetchCard(id)
   const buttonAdd = document.querySelector(".button-add");
-
   buttonAdd.click();
 
 
   if(buttonAdd.click(id)){
+    const cardToUpdate = await fetchCard(id)
     const res = await fetch(`http://localhost:5000/events/${id}`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(cards)
+      body: JSON.stringify(cardToUpdate)
   })
   const editedEvents = await res.json()
-  setCards([...cards, editedEvents]);
+  setCards(Object.assign(cards, editedEvents))
+
   
   }
 
-  // renvoyer la donnée
-  return getCard;
 
  
 }
@@ -102,10 +100,7 @@ const addEvent =  async (event) => {
     },
     body: JSON.stringify(event)
   })
-  //console.log(task)
-  //const id = Math.floor(Math.random() * 1000)
-  //const newTask = {id, ...task}
-  //console.log(newTask)
+
   const newEvent = await res.json()
   setCards([...cards, newEvent])
 }
@@ -121,10 +116,13 @@ const [showAddEvent, setShowAddEvent] = useState(false)
         
         { showAddEvent && <AddEvent onAdd={addEvent}  event={editCard}/> }
         <Routes>
+            <Route path="/build/" element={<Catalog tasks={cards} onDeleteMany={deleteCard} onEditMany={editCard} onToggleMany={toggleReminder}/>}/>
+          </Routes>
+          <Routes>
             <Route path="/" element={<Catalog tasks={cards} onDeleteMany={deleteCard} onEditMany={editCard} onToggleMany={toggleReminder}/>}/>
           </Routes>
         <Routes>
-          <Route path='/about' element={<About/>}/>
+          <Route path='/build/about' element={<About/>}/>
         </Routes>
         <Footer/>
       </>
