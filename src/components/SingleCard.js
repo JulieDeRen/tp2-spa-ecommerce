@@ -2,7 +2,7 @@ import { FaTimes, FaEdit } from 'react-icons/fa';
 
 const SingleCard = ({event, onDelete, onEdit, onToggle}) => {
     return(
-        <div className={`ticket ${event.promotion ? 'promotion' : ''}`} onDoubleClick={() => onToggle(event.id)}>
+        <div className={`ticket ${event.promotion ? 'promotion' : ''}`} onDoubleClick={() => onToggle(event.id)}> 
             <span type="ticket" className="--flex-column"> 
                 <div className="top --flex-column">
                 <div className="bandname -bold --flex-row-j">
@@ -40,7 +40,7 @@ const SingleCard = ({event, onDelete, onEdit, onToggle}) => {
                 <div className="rip"></div>
                 <div className="bottom --flex-row-j">
                 <div className="barcode"></div>
-                <a className="buy" href="#">ACHETER</a>
+                <a className="buy" href="#acheter">ACHETER</a>
                 </div>
             </span>
         </div>

@@ -11,26 +11,26 @@ import About from './components/About'
 function App() {
 //1 - Global
 
-const [tasks, setCards] = useState ([])
+const [cards, setCards] = useState ([])
 
 useEffect(()=>  {
     const getCards = async () => {
-      const eventsFromServer = await fetchTasks()
+      const eventsFromServer = await fetchEvents()
       setCards(eventsFromServer)
     }
     getCards()
-    //fetchTasks()
+    //fetchEvents()
 },[])
 
-const fetchTasks = async () => {
-  const res = await fetch('http://localhost:5000/tasks')
+const fetchEvents = async () => {
+  const res = await fetch('http://localhost:5000/events')
   const data = await res.json()
   //console.log(data)
   return data
 }
 
 const fetchCard = async (id) => {
-  const res = await fetch(`http://localhost:5000/tasks/${id}`)
+  const res = await fetch(`http://localhost:5000/events/${id}`)
   const data = await res.json()
   //console.log(data)
   return data
@@ -38,82 +38,90 @@ const fetchCard = async (id) => {
 
 //Delete
 const deleteCard = async (id) => {
-  await fetch(`http://localhost:5000/tasks/${id}`, {
+  await fetch(`http://localhost:5000/events/${id}`, {
     method: 'DELETE',
   })
   //console.log(id)
-  setCards(tasks.filter((task) => task.id !== id))
+  setCards(cards.filter((event) => event.id !== id))
 }
 
 // Update
-const editCard = async (task, id) => {
+const editCard = async (id) => {
+  const getCard = await fetchCard(id)
   const buttonAdd = document.querySelector(".button-add");
-  console.log(buttonAdd);
+
   buttonAdd.click();
 
-  if(buttonAdd.click()){
-    const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+
+  if(buttonAdd.click(id)){
+    const res = await fetch(`http://localhost:5000/events/${id}`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(task)
+      body: JSON.stringify(cards)
   })
-  const newTask = await res.json()
-  setCards([...tasks, newTask])
+  const editedEvents = await res.json()
+  setCards([...cards, editedEvents]);
+  
   }
+
+  // renvoyer la donnée
+  return getCard;
+
  
 }
 
 
 //TogglePromotion
 const toggleReminder = async (id) => {
-  const taskToToggle = await fetchCard(id)
-  const updTask = {...taskToToggle, reminder: !taskToToggle.reminder}
+  console.log("toggle")
+  const cardToToggle = await fetchCard(id)
+  const editPromotion= {...cardToToggle, promotion: !cardToToggle.promotion}
   //console.log(updTask)
-  const res = await fetch(`http://localhost:5000/tasks/${id}`,{
+  const res = await fetch(`http://localhost:5000/events/${id}`,{
       method: 'PUT',
       headers:{
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(updTask)
+      body: JSON.stringify(editPromotion)
   })
   const data = await res.json()
  // console.log(id)
-  setCards(tasks.map((task) => task.id === id ? { ...task, reminder:data.reminder} : task))
+  setCards(cards.map((event) => event.id === id ? { ...event, promotion:data.promotion} : event))
 
 }
 
 //Add
-const addTask =  async (task) => {
+const addEvent =  async (event) => {
   
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch('http://localhost:5000/events', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json'
     },
-    body: JSON.stringify(task)
+    body: JSON.stringify(event)
   })
   //console.log(task)
   //const id = Math.floor(Math.random() * 1000)
   //const newTask = {id, ...task}
   //console.log(newTask)
-  const newTask = await res.json()
-  setCards([...tasks, newTask])
+  const newEvent = await res.json()
+  setCards([...cards, newEvent])
 }
 
 //toggle Form
 
-const [showAddTask, setShowAddTask] = useState(false)
+const [showAddEvent, setShowAddEvent] = useState(false)
 
   return (
     <BrowserRouter>
       <>
-        <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask}/>
+        <Header onAdd={() => setShowAddEvent(!showAddEvent)} showAdd={showAddEvent}/>
         
-        { showAddTask && <AddEvent onAdd={addTask}/> }
+        { showAddEvent && <AddEvent onAdd={addEvent}  event={editCard}/> }
         <Routes>
-            <Route path="/" element={<Catalog tasks={tasks} onDeleteMany={deleteCard} onEditMany={editCard} onToggleMany={toggleReminder}/>}/>
+            <Route path="/" element={<Catalog tasks={cards} onDeleteMany={deleteCard} onEditMany={editCard} onToggleMany={toggleReminder}/>}/>
           </Routes>
         <Routes>
           <Route path='/about' element={<About/>}/>

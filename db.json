@@ -1,5 +1,5 @@
 {
-  "tasks": [
+  "events": [
     {
       "id": 1,
       "text": "Yemen Blues",
@@ -30,7 +30,7 @@
       "venue": "Lion d'or",
       "day": "Jully 9th",
       "price": 45,
-      "promotion": false,
+      "promotion": true,
       "id": 3
     },
     {
@@ -82,7 +82,7 @@
       "day": "2023-03-25",
       "title": "okllkn",
       "price": "6",
-      "promotion": false,
+      "promotion": true,
       "venue": "ewwrew",
       "img": "./upload/email.png",
       "category": "",
@@ -110,6 +110,50 @@
       "img": "./upload/email.png",
       "category": "",
       "id": 10
+    },
+    {
+      "text": "Test 3000009",
+      "day": "2023-04-02",
+      "title": "klsdajfads;k",
+      "price": "0",
+      "promotion": false,
+      "venue": "fafdasf",
+      "img": "email.png",
+      "category": "",
+      "id": 11
+    },
+    {
+      "text": "test img999",
+      "day": "2023-03-31",
+      "title": "kfdlksad",
+      "price": "6",
+      "promotion": false,
+      "venue": "fdafdka",
+      "img": "email.png",
+      "category": "",
+      "id": 12
+    },
+    {
+      "text": "test img",
+      "day": "2023-03-26",
+      "title": "kljdf;fjk",
+      "price": "6",
+      "promotion": false,
+      "venue": "fk;lsfkd",
+      "img": "email.png",
+      "category": "",
+      "id": 13
+    },
+    {
+      "text": "test img 400000",
+      "day": "2023-03-18",
+      "title": "djo;kjd;a",
+      "price": "6",
+      "promotion": true,
+      "venue": "dsDsad",
+      "img": "email.png",
+      "category": "",
+      "id": 14
     }
   ]
 }

@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
+const AddEvent = ({onAdd, event}) => {
     const [text, setText] = useState('')
     const [day, setDay] = useState('')
     const [price, setPrice] = useState('')
@@ -12,10 +12,11 @@ const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
     const [category, setCategory] = useState('')
     const [img, setImg] = useState('')
     const [promotion, setPromotion] = useState(false)
-
+    const [selectedFile, setSelectedFile] = useState();
+    const [isFilePicked, setIsFilePicked] = useState(false);
 
     const onSubmit = (e) => {
-        console.log(setTasks);
+        
         e.preventDefault()
         if(!text){
             alert('Informations manquantes')
@@ -50,6 +51,7 @@ const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
 
         }
         onAdd({text, day, title, price, promotion, venue, img, category})
+        event({text, day, title, price, promotion, venue, img, category})
         setText('')
         setDay('')
         setTitle('')
@@ -61,7 +63,8 @@ const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
 
     }
 
-    function onClickHandler(){
+    function onClickHandler(e){
+
         console.log("bouton upload")
 
         var formData = new FormData();
@@ -70,7 +73,7 @@ const AddEvent = ({onAdd, setTasks, onClickHandler}) => {
 
         formData.append("img", imagefile.files[0]);
         console.log('>> formData >> ', formData);
-        const res = axios.post(`http://localhost:5000/upload`, imagefile.files[0], {
+        axios.post(`http://localhost:5000/upload`, imagefile.files[0], {
             headers: {
             'Content-Type': 'multipart/form-data'
             }
