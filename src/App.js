@@ -62,8 +62,8 @@ const editCard = async (id) => {
       body: JSON.stringify(cardToUpdate)
   })
   const editedEvents = await res.json()
-  setCards(Object.assign(cards, editedEvents))
-
+  setCards(cards.map((event) => editedEvents.id === id));
+ 
   
   }
 

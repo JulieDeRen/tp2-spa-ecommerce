@@ -5,7 +5,7 @@
       "text": "Yemen Blues",
       "title": "It doesn't matter",
       "category": "Musique",
-      "img": "./upload/1.jpeg",
+      "img": "build/upload/1.jpeg",
       "venue": "Mtelus",
       "day": "Feb 5th at 2:30pm",
       "price": 60,
@@ -15,7 +15,7 @@
       "id": 2,
       "text": "Blue man group",
       "title": "PVC tour",
-      "img": "./upload/2.jpg",
+      "img": "build/upload/2.jpg",
       "category": "Musique",
       "venue": "Théâtre Rialto",
       "day": "Feb 6th at 1:30pm",
@@ -26,7 +26,7 @@
       "text": "Estas Tonne",
       "title": "Internal flight",
       "category": "Musique",
-      "img": "./upload/3.jpeg",
+      "img": "build/upload/3.jpeg",
       "venue": "Lion d'or",
       "day": "Jully 9th",
       "price": 45,
@@ -36,7 +36,7 @@
     {
       "text": "Faran Ensemble",
       "title": "Dunes",
-      "img": "./upload/4.jpeg",
+      "img": "build/upload/4.jpeg",
       "category": "Musique",
       "venue": "Lion d'or",
       "day": "29 mai 2023",
@@ -47,7 +47,7 @@
     {
       "text": "Grands Ballets Canadiens",
       "title": "Casse-Noisette",
-      "img": "./upload/5.jpg",
+      "img": "build/upload/5.jpg",
       "category": "Danse",
       "venue": "Place-des-arts",
       "day": "10 sept 2023",
@@ -58,7 +58,7 @@
     {
       "text": "Fred Pellerin",
       "title": "Belle Lurette",
-      "img": "./upload/6.jpeg",
+      "img": "build/upload/6.jpeg",
       "category": "Conte & Légende",
       "venue": "Place-des-arts",
       "day": "15 sept 2023",
@@ -73,7 +73,7 @@
       "price": "2",
       "promotion": true,
       "venue": "Ici",
-      "img": "./github.png",
+      "img": "build/upload/github.png",
       "category": "",
       "id": 8
     },
@@ -84,53 +84,9 @@
       "price": "8",
       "promotion": false,
       "venue": "ici",
-      "img": "./github.png",
+      "img": "build/upload/github.png",
       "category": "",
       "id": 10
-    },
-    {
-      "text": "james 008",
-      "day": "2023-03-29",
-      "title": "dj;kajf",
-      "price": "0",
-      "promotion": false,
-      "venue": "jojio",
-      "img": "./upload/email.png",
-      "category": "",
-      "id": 11
-    },
-    {
-      "text": "010",
-      "day": "2023-03-30",
-      "title": "d;sklAJ",
-      "price": "9",
-      "promotion": false,
-      "venue": "XLZ:KL",
-      "img": "./upload/email.png",
-      "category": "",
-      "id": 12
-    },
-    {
-      "text": "11",
-      "day": "2023-04-02",
-      "title": "BHJBK",
-      "price": "0",
-      "promotion": false,
-      "venue": "JK,JK",
-      "img": "./upload/github.png",
-      "category": "",
-      "id": 13
-    },
-    {
-      "text": "lonnngtest",
-      "day": "2023-04-02",
-      "title": "lkdjasl;k",
-      "price": "0",
-      "promotion": false,
-      "venue": "kfda;slkfd",
-      "img": "./upload/github.png",
-      "category": "",
-      "id": 14
     }
   ]
 }
