@@ -3,8 +3,7 @@
 * {
   box-sizing: border-box;
 }
-html,
-  body {
+html   {
     width: 100%;
     height: 100%;
     padding: 0;
@@ -19,6 +18,7 @@ body {
   flex-direction: column;
   height: max-content;
   margin: 0;
+  padding: 0;
   font-family: "Lato", sans-serif;
 
 }
@@ -232,34 +232,43 @@ footer {
 
 .grid-container--fit {
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    width: 100%;
+    padding: 0 40px;
 
     /*background-image: linear-gradient(-45deg, #8067b7, #ec87c0);
     min-height: calc(100vh - 40px);*/
     /* gap not working ...why ?? */
   }
-  #root{
-    z-index: 2;
-    padding: 60px 40px 60px 40px;
-    width: 100vw;
-    background: #8e01e8; /* Old browsers */
-    background: -moz-linear-gradient(-45deg, #1101e8 0%, #8e01e8  100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(-45deg, #1101e8 0%, #8e01e8 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(-135deg, #1101e8 0%, #8e01e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e01e8', endColorstr='#1101e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  }
-  #root h2{
-    margin-bottom: 35vh;
-  }
+
 
 .buffer{
-  min-width: 100vw;
+  width: 100vw;
   margin: 0;
-  height: 200vh;
+  height: 100vh;
   background: #8e01e8; /* Old browsers */
   background: -moz-linear-gradient(-45deg,  #8e01e8 0%, #1101e8 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(-45deg,  #8e01e8 0%,#1101e8 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg,  #8e01e8 0%,#1101e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8e01e8', endColorstr='#1101e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+#root {
+  z-index: 2;
+  padding: 60px 0;
+  width: 100vw;
+  background: #8e01e8;
+  /* Old browsers */
+  background: -moz-linear-gradient(45deg, #1101e8 0%, #8e01e8 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(45deg, #1101e8 0%, #8e01e8 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(250deg, #1101e8 0%, #8e01e8 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#8e01e8', endColorstr='#1101e8', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+}
+#root h2{
+  margin-bottom: 35vh;
 }
 
 
@@ -271,6 +280,9 @@ footer {
     padding: 0;
   }*/
 
+  div.boombox.active {
+    margin-right: 40px;
+  }
   .boombox {
     position: relative;
     background: #000000;
@@ -718,6 +730,11 @@ footer {
       font-size: 22px;
     }
   }
+  @media only screen and (max-width: 910px) {
+    .boombox {
+      display: none;
+    }
+  }
 
   @media only screen and (max-width: 599px) {
     .boombox {
@@ -757,7 +774,7 @@ nav.navigation{
 }
 a:not(a.logo){
   text-decoration: none;
-  padding: 30px;
+  padding: 40px;
   color: #1d1d1f;
   cursor: pointer;
 }
@@ -832,10 +849,21 @@ background-image: linear-gradient(45deg, #fa7671 50%, #f45f7f);
 .header-flexbox{
 display: flex;
 flex-direction: row;
-height: max-content;
+height: 100vh;
 position : sticky;
 top: 0;
-padding: 100px 40px;
+padding: 100px 0px;
+margin: 0;
 justify-content: space-between;
+width: 100%;
+}
+.header-flexbox:first-child{
+  margin-top: auto;
+  margin-bottom: auto;
+  display: flex;
+  justify-content: center;
+}
+.header-flexbox h1 {
+  margin-left: 40px;
 }
 

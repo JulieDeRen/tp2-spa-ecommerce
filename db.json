@@ -41,7 +41,7 @@
       "venue": "Lion d'or",
       "day": "29 mai 2023",
       "price": 35,
-      "promotion": false,
+      "promotion": true,
       "id": 4
     },
     {
@@ -52,7 +52,7 @@
       "venue": "Place-des-arts",
       "day": "10 sept 2023",
       "price": 95,
-      "promotion": false,
+      "promotion": true,
       "id": 5
     },
     {
@@ -63,28 +63,28 @@
       "venue": "Place-des-arts",
       "day": "15 sept 2023",
       "price": 70,
-      "promotion": false,
+      "promotion": true,
       "id": 6
     },
     {
       "text": "Tiken Jah fakoly",
       "day": "2023-04-01",
       "title": "Rastafari",
-      "price": "2",
+      "price": "40",
       "promotion": true,
       "venue": "Ici",
-      "img": "build/upload/github.png",
+      "img": "build/upload/TikenJah.jpeg",
       "category": "",
       "id": 8
     },
     {
-      "text": "James Bond",
+      "text": "Silvio Rodriguez",
       "day": "2023-03-23",
       "title": "007",
-      "price": "8",
-      "promotion": false,
+      "price": "35",
+      "promotion": true,
       "venue": "ici",
-      "img": "build/upload/github.png",
+      "img": "build/upload/SilvioRodriguez.jpg",
       "category": "",
       "id": 10
     }
